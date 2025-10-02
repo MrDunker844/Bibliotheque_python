@@ -2,6 +2,14 @@ import csv
 import json
 
 
+class ErreurBibliotheque(Exception):
+    """Exception personnalisée"""
+
+    def __init__(self, message: str, code_erreur: int = 0):
+        super().__init__(message)
+        self.code_erreur = code_erreur
+
+
 class Livre:
     def __init__(self, titre: str, auteur: str, isbn: str):
         self.type = "papier"
@@ -26,6 +34,8 @@ class Bibliothèque:
         self.nom = nom
 
     def ajouter(self, livre):
+        if livre.isbn in [i.isbn for i in self.livres]:
+            raise ErreurBibliotheque("ISBN déjà existant", code_erreur=1001)
         self.livres.append(livre)
 
     def supprimer_isbn(self, code: str):
@@ -137,7 +147,8 @@ livre3 = Livrenumerique("la mort", "voltaire", "6584", 5)
 livre4 = Livre("la vie", "voltaire", "65874")
 biblio1 = Bibliothèque("pop")
 biblio2 = Bibliothèque("poper")
-# biblio1.ajouter(livre1)
+biblio1.ajouter(livre1)
+biblio1.ajouter(livre1)
 # biblio1.ajouter(livre2)
 # biblio1.ajouter(livre3)
 # biblio1.ajouter(livre4)
@@ -146,6 +157,6 @@ biblio2 = Bibliothèque("poper")
 # biblio1.rechercher_auteur("voltaire")
 # biblio1.exporter_csv()
 # biblio1.exporter_json()
-biblio2.charger_json()
-biblio2.afficher()
-biblio2.rechercher_auteur("voltaire")
+# biblio2.charger_json()
+# biblio2.afficher()
+# biblio2.rechercher_auteur("voltaire")
