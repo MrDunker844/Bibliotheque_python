@@ -1,0 +1,27 @@
+[
+  {
+    "type": "papier",
+    "titre": "lol0",
+    "auteur": "lille",
+    "isbn": "654"
+  },
+  {
+    "type": "numerique",
+    "titre": "la mort",
+    "auteur": "voltaire",
+    "isbn": "6584",
+    "taille": 5
+  },
+  {
+    "type": "papier",
+    "titre": "la vie",
+    "auteur": "voltaire",
+    "isbn": "65874"
+  },
+  {
+    "type": "papier",
+    "titre": "bla",
+    "auteur": "bli",
+    "isbn": "987"
+  }
+]
